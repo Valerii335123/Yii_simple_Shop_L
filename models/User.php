@@ -2,12 +2,20 @@
 
 namespace app\models;
 
+use Yii;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 
 class User extends ActiveRecord implements IdentityInterface
 {
- 
+
+    public static function checkAdmin()
+    {
+        if( Yii::$app->user->id==1)
+            return true;
+        else
+            return false;
+    }
 
     public function setPassword($password)
     {

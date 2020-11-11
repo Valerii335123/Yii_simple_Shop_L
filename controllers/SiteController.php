@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\BasketUser;
+use app\models\TovarPicture;
 use app\models\TovarSearch;
 use Yii;
 use yii\filters\AccessControl;
@@ -12,6 +14,8 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\user;
 use app\models\Login;
+use app\models\Tovar;
+use yii\db\Query;
 
 
 class SiteController extends Controller
@@ -21,18 +25,23 @@ class SiteController extends Controller
     /**
      * {@inheritdoc}
      */
-     public $layout = 'main';
+    public $layout = 'main';
     public function behaviors()
     {
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout'],
+                'only' => ['logout', 'about'],
                 'rules' => [
                     [
                         'actions' => ['logout'],
                         'allow' => true,
                         'roles' => ['@'],
+                    ],
+                    [
+                        'actions' => ['about'],
+                        'allow' => false,
+                        'roles' => ['?'],
                     ],
                 ],
             ],
@@ -69,10 +78,17 @@ class SiteController extends Controller
     public function actionIndex()
     {
 
+
+        //створення запиту
         $tovar =TovarSearch::find()->all();
+            $tt =(new Query())
+                ->select('tovar.id,tovar.name,tovar.description,tovar.price,tovar.amount, ,category.name c' )
+                ->from('tovar','category')
+                ->join(' INNER JOIN','category','tovar.idcategory=category.id')
+                ;
 
         return $this->render('index',[
-            'tovar'=>$tovar,
+            'tovar'=>$tt,
         ]);
     }
 
@@ -134,6 +150,41 @@ class SiteController extends Controller
         ]);
     }
 
+    public function actionTovarview($id)
+    {
+        $model= Tovar::findOne($id);
+        $basket=new BasketUser();
+        $foto = TovarPicture::find()->
+        where(["id_tovar"=>
+            $id])->
+        all();
+        return $this->render('tovarview',[
+            'model'=>$model,
+            'foto'=>$foto,
+            'basket'=>$basket,
+        ]);
+    }
+        public function actionAddtobasket($id_tovar)
+        {
+            $mode=new BasketUser();
+            $mode->idTovar=$id_tovar;
+            $mode->idUser=Yii::$app->user->id;
+            $mode->amount=1;
+            if($mode->save()){
+
+                $model= Tovar::findOne($id_tovar);
+                $basket=new BasketUser();
+                $foto = TovarPicture::find()->
+                where(["id_tovar"=>
+                    $id_tovar])->
+                all();
+                return $this->render('tovarview',[
+                    'model'=>$model,
+                    'foto'=>$foto,
+                    'basket'=>$basket,
+                ]);
+            }
+        }
     /**
      * Displays about page.
      *

@@ -36,4 +36,6 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]) ?>
 
+    <?= Html::a('Change Password', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+
 </div>
