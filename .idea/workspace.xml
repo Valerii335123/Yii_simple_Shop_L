@@ -20,27 +20,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7dcafaab-a945-445b-9dae-c0bce3589d63" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Shop.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeception.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jsLinters/jshint.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/php-test-framework.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/yii2settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/site/tovarview.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/ButStoreUserSearch.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/Search.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/User/story.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/uploads/2381b50f886ad62db23d9fc86c3cb9c2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/uploads/cc3999ab104dc512f784d10e2d3d42da.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/BasketuserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/BasketuserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/SiteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/SiteController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/Basketuser/_form.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/site/_form.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/User/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/User/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/admin/controllers/TovarController.php" beforeDir="false" afterPath="$PROJECT_DIR$/modules/admin/controllers/TovarController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/admin/views/Tovar/_form.php" beforeDir="false" afterPath="$PROJECT_DIR$/modules/admin/views/Tovar/_form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/admin/views/Tovar/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/modules/admin/views/Tovar/view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/Basketuser/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/Basketuser/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/User/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/User/view.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/layouts/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/main.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/partials/tovar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/tovar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/site.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/site/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/site/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/site/tovarview.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/site/tovarview.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,6 +178,14 @@
       <workItem from="1604850837507" duration="6161000" />
       <workItem from="1604946833324" duration="4125000" />
       <workItem from="1605083295911" duration="7740000" />
+      <workItem from="1605128059920" duration="1844000" />
+      <workItem from="1605249443396" duration="7918000" />
+      <workItem from="1605377409288" duration="2739000" />
+      <workItem from="1605773095141" duration="1311000" />
+      <workItem from="1605866184399" duration="1196000" />
+      <workItem from="1605958025483" duration="16588000" />
+      <workItem from="1606211600693" duration="2326000" />
+      <workItem from="1606242057310" duration="3740000" />
     </task>
     <servers />
   </component>
@@ -200,10 +205,15 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="655" y="295" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1604853095972">
+    <state x="655" y="295" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1605380062069">
       <screen x="0" y="0" width="1851" height="1080" />
     </state>
-    <state x="655" y="295" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1851.1080@0.0.1851.1080" timestamp="1604853095972" />
+    <state x="655" y="295" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1851.1080@0.0.1851.1080" timestamp="1605380062069" />
+    <state x="788" y="450" key="NewPhpFileDialog" timestamp="1606214917293">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="760" y="463" key="NewPhpFileDialog/0.0.1851.1080@0.0.1851.1080" timestamp="1605380055214" />
+    <state x="788" y="450" key="NewPhpFileDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1606214917293" />
     <state x="219" y="53" width="1563" height="1067" key="dock-window-1" timestamp="1605126625972">
       <screen x="0" y="0" width="1851" height="1080" />
     </state>
@@ -216,14 +226,27 @@
       <screen x="0" y="0" width="1851" height="1080" />
     </state>
     <state x="588" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1851.1080@0.0.1851.1080" timestamp="1605126994306" />
+    <state x="647" y="452" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1605253379645">
+      <screen x="0" y="0" width="1851" height="1080" />
+    </state>
+    <state x="647" y="452" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1851.1080@0.0.1851.1080" timestamp="1605253379645" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="php">
+        <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/controllers/SiteController.php</url>
-          <line>4</line>
+          <line>178</line>
+          <properties>
+            <option name="className" value="\app\controllers\SiteController" />
+            <option name="methodName" value="actionTovarview" />
+          </properties>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/views/site/registration.php</url>
+          <line>2</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

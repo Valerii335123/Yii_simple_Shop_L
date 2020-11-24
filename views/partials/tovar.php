@@ -8,39 +8,32 @@ use yii\helpers\Html;
 <ul class="products clearfix">
 
 
-
-                //$tovar->each()
-<!--    -->
-//
-//        //вивід всіх ключів на сторінку
-//        foreach ($t as $key=>$value)
-//        {
-//            echo $key;
-//            echo "   ";
-//            echo $value;
-//            echo "   ";
-//        }
-        echo '<br>';
-//    <?php foreach($tovar->each() as $t):?>
+    <?php foreach($tovar->each() as $t):?>
     <li class="product-wrapper">
 
 
 
-            <a class="product" href="site/tovarview?id=<?=$t['id']?> ">
+            <a class="product" href="<?=Yii::$app->homeUrl?>site/tovarview?id=<?=$t['id']?> ">
                 <strong>
                     <?= $t['name'] ?>
                 </strong>
                 <br>
+
+                        <?= Html::img('@web/uploads/'.$t['foto'].'', array('height'=>'100%', 'width'=>'100%'));?>
                 <br>
                 <p>
-                    <?= $t['description']?>
-                    <br>
+
                     Price
                     <?= $t['price']?>
                     <br>
-                    Amount
-                    <?= $t['amount']?>
+
+                    Like
+                    <?= $t['like']?>
                     <br>
+
+
+
+
                     Category
                     <?= $t['c']?>
                 </p>

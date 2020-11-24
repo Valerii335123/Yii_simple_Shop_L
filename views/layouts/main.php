@@ -38,7 +38,7 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
+            ['label' => 'Home', 'url' => [Yii::$app->homeUrl]],
             ['label' => 'About', 'url' => ['/site/about']],
             Yii::$app->user->id==1 && !Yii::$app->user->isGuest?(
                     ['label' => 'Admin', 'url' => ['/admin']]

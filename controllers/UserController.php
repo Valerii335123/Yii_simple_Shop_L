@@ -2,9 +2,12 @@
 
 namespace app\controllers;
 
+use app\models\ButStoreUser;
 use Yii;
 use app\models\User;
 use app\models\UserSearch;
+
+use app\models\ButStoreUserSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -90,6 +93,7 @@ class UserController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
+
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -112,6 +116,18 @@ class UserController extends Controller
         return $this->redirect(['index']);
     }
 
+    public function actionStory($id)
+    {
+      //  $search=new ButStoreUserSearch();
+        //$model=$search->search(Yii::$app->request->queryParams,$id);
+        $model=ButStoreUser::find()->where(['idUser'=>$id])->all();
+            return $this->render('story',[
+                'model'=>$model,
+
+                ]);
+    }
+
+
     /**
      * Finds the User model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
@@ -127,4 +143,6 @@ class UserController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+
 }

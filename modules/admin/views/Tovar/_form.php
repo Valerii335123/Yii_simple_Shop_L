@@ -18,7 +18,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'price')->textInput() ?>
 
-    <?= $form->field($model, 'amount')->textInput() ?>
+
 
     <?= Html::dropDownList('idCategory', $selectedCategory,$category , ['class'=>'form-control']) ?>
 

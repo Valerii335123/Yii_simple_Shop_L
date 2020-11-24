@@ -2,13 +2,15 @@
 
 namespace app\controllers;
 
+
 use Yii;
 use app\models\Basketuser;
 use app\models\BasketuserSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use app\models\ButStoreUser;
+use yii\db\Query;
 /**
  * BasketuserController implements the CRUD actions for Basketuser model.
  */
@@ -35,13 +37,23 @@ class BasketuserController extends Controller
      */
     public function actionIndex()
     {
+        if(Yii::$app->user->isGuest)
+        {
+            return $this->goHome();
+        }
         $searchModel = new BasketuserSearch();
         $id=Yii::$app->user->id;
 
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams,$id);
-
+//        $dataProvider=Basketuser::find()
+//
+//            ->where(['idUser'=>$id])
+//            ->sum('amount');
+//
+//
+//        ;
         return $this->render('index', [
-            'searchModel' => $searchModel,
+
             'dataProvider' => $dataProvider,
         ]);
     }
@@ -57,6 +69,25 @@ class BasketuserController extends Controller
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
+    }
+
+    public function actionBue(){
+        $idUser=Yii::$app->user->id;
+            $basket=BasketuserSearch::find()->
+            Where([
+                'idUser'=>$idUser,
+            ])->all();
+
+               foreach ($basket as $b)
+               {
+                    $bs=new ButStoreUser();
+                    $bs->idTovar=$b->idTovar;
+                    $bs->idUser=$b->idUser;
+                    $bs->amount=$b->amount;
+                    $bs->save();
+                    $b->delete();
+               }
+                return $this->goHome();
     }
 
     /**

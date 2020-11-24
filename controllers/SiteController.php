@@ -3,9 +3,13 @@
 namespace app\controllers;
 
 use app\models\BasketUser;
+use app\models\Search;
 use app\models\TovarPicture;
 use app\models\TovarSearch;
+use app\models\Coments;
+use Codeception\Step\Comment;
 use Yii;
+use yii\data\Pagination;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
@@ -16,7 +20,7 @@ use app\models\user;
 use app\models\Login;
 use app\models\Tovar;
 use yii\db\Query;
-
+use app\models\Like;
 
 class SiteController extends Controller
 {
@@ -78,17 +82,35 @@ class SiteController extends Controller
     public function actionIndex()
     {
 
+        //зробити вивід перши три товара за лайками
 
         //створення запиту
+            $model=new Search();
         $tovar =TovarSearch::find()->all();
-            $tt =(new Query())
-                ->select('tovar.id,tovar.name,tovar.description,tovar.price,tovar.amount, ,category.name c' )
-                ->from('tovar','category')
-                ->join(' INNER JOIN','category','tovar.idcategory=category.id')
-                ;
+        $tt = (new Query())
+            ->select('tovar.id,tovar.name,tovar.price ,category.name c,tovar_picture.source foto, Count(like.idTovar) like')
+            ->from('tovar', 'category', 'tovar_picture')
+            ->join(' INNER JOIN', 'category', 'tovar.idcategory=category.id')
+            ->join('LEFT JOIN', 'tovar_picture', 'tovar.id=tovar_picture.id_tovar')
+            ->join('LEFT JOIN', 'like','like.idTovar=tovar.id')
+            ->groupBy('tovar.id');
+        if($model->load(Yii::$app->request->post()))
+        {
+            if (strlen($model->name)>=3)
+            $tt->where(['tovar.name'=>$model->name]);
+            if((strlen($model->from)>=1 || strlen($model->from)>=1)&& $model->from<$model->to)
+            {
+                    $tt->andWhere(['between','tovar.price',$model->from,$model->to]);
+                //условие на выборку в промежутку
+            }
+        }
+        else {
 
+
+        }
         return $this->render('index',[
             'tovar'=>$tt,
+            'model'=>$model,
         ]);
     }
 
@@ -112,8 +134,12 @@ class SiteController extends Controller
 
             if($login_model->validate())
             {
-                Yii::$app->user->login($login_model->getUser());
-                return $this->goHome();
+                $data=User::find()->where(['name'=>$login_model->name])->one();
+                if($data->password==$login_model->password) {
+                    Yii::$app->user->login($login_model->getUser());
+                }
+                    return $this->goHome();
+
             }
         }
 
@@ -153,38 +179,68 @@ class SiteController extends Controller
     public function actionTovarview($id)
     {
         $model= Tovar::findOne($id);
+
         $basket=new BasketUser();
+
+
+        if($basket->load(Yii::$app->request->post()))
+        {
+            $basket->idTovar=$id;
+            if(!Yii::$app->user->isGuest) {
+                $basket->idUser = Yii::$app->user->id;
+                if($basket->save())
+                {
+                    $basket=new BasketUser();
+
+                }
+            }
+        }
+
+
         $foto = TovarPicture::find()->
         where(["id_tovar"=>
             $id])->
         all();
+
+        $coment=new Coments();
+        if($coment->load(Yii::$app->request->post()))
+        {
+            if(!Yii::$app->user->isGuest && strlen($coment->coment)>=10) {
+                if ($coment->save()) {
+                    $coment = new Coments();
+                }
+            }
+        }
+
+        $like=Like::find()->where(['idTovar'=>$id])->count();
+
+        $comentsUser =(new Query())
+            ->select('coments.coment c, user.name u')
+            ->from(' coments')
+
+            ->where(['coments.idTovar'=>$id])
+            ->join(' INNER JOIN','user','coments.idUser=user.id')
+            ->groupBy(['coments.id'])
+            ;
+
+                $pages=new Pagination(['totalCount'=>$comentsUser->count() ]);
+             //   print_r($pages);
+                $comentUser=$comentsUser->offset($pages->offset)
+                    ->limit($pages->limit)
+                    ->all();
         return $this->render('tovarview',[
             'model'=>$model,
             'foto'=>$foto,
+            'coment'=>$coment,
             'basket'=>$basket,
+            'comentsUser'=>$comentUser,
+            'pages'=>$pages,
+            'like'=>$like,
+
         ]);
     }
-        public function actionAddtobasket($id_tovar)
-        {
-            $mode=new BasketUser();
-            $mode->idTovar=$id_tovar;
-            $mode->idUser=Yii::$app->user->id;
-            $mode->amount=1;
-            if($mode->save()){
 
-                $model= Tovar::findOne($id_tovar);
-                $basket=new BasketUser();
-                $foto = TovarPicture::find()->
-                where(["id_tovar"=>
-                    $id_tovar])->
-                all();
-                return $this->render('tovarview',[
-                    'model'=>$model,
-                    'foto'=>$foto,
-                    'basket'=>$basket,
-                ]);
-            }
-        }
+
     /**
      * Displays about page.
      *
@@ -215,7 +271,7 @@ class SiteController extends Controller
             //перевірка кількості записів в бд та зберігаю
             if($query->count()==0 && $user->save() )
             {
-                return $this->render('index');
+                return $this->render('login');
             }
             else
             {
@@ -229,5 +285,24 @@ class SiteController extends Controller
                 ]);
             }
         }
+    }
+
+
+    public function actionLike($idT){
+    $like=new Like();
+        $l=Like::find()->where(['idUser'=>Yii::$app->user->id])->andWhere(['idTovar'=>$idT])->one();
+        if($l) {
+                $l->delete();
+        }
+        else
+         {
+            $like->idUser=Yii::$app->user->id;
+            $like->idTovar=$idT;
+            $like->save();
+           // print_r($like);
+        }
+        return $this->redirect(['tovarview',
+            'id'=>$idT,
+        ]);
     }
 }

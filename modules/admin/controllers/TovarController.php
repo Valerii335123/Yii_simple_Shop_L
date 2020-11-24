@@ -65,11 +65,21 @@ class TovarController extends Controller
         where(["id_tovar"=>
             $id])->
         all();
-
+        $tovar=$this->findModel($id);
+        $cat=$this->findCategory($tovar->idCategory);
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $tovar,
             'foto'=>$foto,
+            'category'=>$cat,
         ]);
+    }
+
+    public function findCategory($idT)
+    {
+        $Cat = Category::findOne($idT);
+            return $Cat;
+
+
     }
 
     /**

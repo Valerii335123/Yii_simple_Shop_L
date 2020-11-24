@@ -1,4 +1,6 @@
 <?php
+use yii\widgets\ActiveForm;
+use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 
@@ -6,13 +8,18 @@ $this->title = 'My Yii Application';
 ?>
 <div class="site-index">
 
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
+    <?php $form = ActiveForm::begin();
 
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
+    echo $form->field($model,'name');
+    echo $form->field($model,'from');
+    echo $form->field($model,'to');
+    echo Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
+    ?>
+
+    <?php ActiveForm::end(); ?>
+
+
 
 
 

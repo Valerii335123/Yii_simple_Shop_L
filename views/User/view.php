@@ -32,10 +32,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'name',
-            'password',
+            
+
         ],
     ]) ?>
 
     <?= Html::a('Change Password', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+    <?= Html::a('Story', ['story', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
 
 </div>

@@ -34,11 +34,18 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'description:ntext',
             'price',
-            'amount',
+
             'idCategory',
         ],
     ]) ?>
+        <h2>Category</h2>
+    <?= DetailView::widget([
+            'model' => $category,
+        'attributes' => [
 
+            'name',
+        ]
+    ]) ?>
 
 
     <?

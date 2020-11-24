@@ -23,18 +23,22 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'idUser',
-            'idTovar',
+
             'amount',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
+
+
+
+        <?= Html::a('Buy','bue')?>
+
 
 
 </div>

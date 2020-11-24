@@ -3,12 +3,13 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\widgets\DetailView;
-
+use \yii\widgets\LinkPager;
 /* @var $this yii\web\View */
 /* @var $model app\models\Tovar */
 /* @var $form ActiveForm */
 ?>
-<div class="tovarview">
+
+<div class="tovar-view" >
 
     <?= DetailView::widget([
         'model' => $model,
@@ -16,15 +17,45 @@ use yii\widgets\DetailView;
             'name',
             'description:ntext',
             'price',
-            'amount',
+
 
         ],
     ]) ?>
 
-    <?= html::a('Add to basket',['addtobasket','id_tovar'=>$model->id]);
-        $form=ActiveForm::begin();
-        $form->field('count','count');
+        <?
+    $coment->idUser=Yii::$app->user->id;
+    $coment->idTovar=$model->id;
+        $basket->idUser=$coment->idUser;
+        $basket->idTovar=$coment->idTovar;
     ?>
+    <?
+     if (!Yii::$app->user->isGuest) {
+        $fo = ActiveForm::begin();
+        echo $fo->field($basket, 'amount')->input('number', [
+            'min' => 0, 'max' => 9999,
+        ]);
+
+        echo $fo->field($basket, 'idTovar')->hiddenInput()->label(false);
+
+        echo html::submitButton('Add to basket', ['class' => 'btn btn-primary']);
+        ActiveForm::end();
+    }
+    ?>
+
+            <? if (!Yii::$app->user->isGuest) {
+        $form = ActiveForm::begin();
+        echo $form->field($coment, 'idUser')->hiddenInput()->label(false);
+        echo $form->field($coment, 'idTovar')->hiddenInput()->label(false);
+        echo $form->field($coment, coment);
+        echo html::submitButton('Add', ['class' => 'btn btn-primary']);
+        ActiveForm::end();
+                echo html::a('Like',['like','idT'=>$model->id],['class' => 'btn btn-primary']);
+                echo html::label($like);
+    }
+    ?>
+
+
+
 
     <?
     foreach ($foto as $a)
@@ -36,6 +67,20 @@ use yii\widgets\DetailView;
         echo "<br>";
     } ?>
 
+
+    <?php
+    foreach ($comentsUser as $com) {
+                echo '<h3> User </h3>';
+                echo $com['u'];
+        echo '<h3>Coment </h3>';
+                echo $com['c'];
+
+                 echo '<pre></pre>';
+        }
+        echo LinkPager::widget([
+                'pagination' => $pages,
+        ]);
+    ?>
 
 
 
