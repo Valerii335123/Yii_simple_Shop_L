@@ -20,24 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7dcafaab-a945-445b-9dae-c0bce3589d63" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/models/ButStoreUserSearch.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/Search.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/User/story.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/2381b50f886ad62db23d9fc86c3cb9c2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/cc3999ab104dc512f784d10e2d3d42da.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/BasketuserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/BasketuserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/SiteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/SiteController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/admin/controllers/TovarController.php" beforeDir="false" afterPath="$PROJECT_DIR$/modules/admin/controllers/TovarController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/admin/views/Tovar/_form.php" beforeDir="false" afterPath="$PROJECT_DIR$/modules/admin/views/Tovar/_form.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/admin/views/Tovar/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/modules/admin/views/Tovar/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/Basketuser/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/Basketuser/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/User/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/User/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/layouts/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/main.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/partials/tovar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/tovar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/site/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/site/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/site/tovarview.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/site/tovarview.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/admin/controllers/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/modules/admin/controllers/DefaultController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/admin/views/default/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/modules/admin/views/default/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,6 +172,7 @@
       <workItem from="1605958025483" duration="16588000" />
       <workItem from="1606211600693" duration="2326000" />
       <workItem from="1606242057310" duration="3740000" />
+      <workItem from="1606300751574" duration="2380000" />
     </task>
     <servers />
   </component>
